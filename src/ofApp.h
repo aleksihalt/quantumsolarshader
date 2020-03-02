@@ -31,4 +31,6 @@ class ofApp : public ofBaseApp{
     
     char * quantumData;
    
+    long timer = 0.;
+    
 };
