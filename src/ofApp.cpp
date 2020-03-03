@@ -18,11 +18,11 @@ void ofApp::setup(){
     shaderFilter.setUniform1f("randomNumber4", (int) quantumData[4]);
     shaderFilter.setUniform1f("randomNumber5", (int) quantumData[5]);
     
-    camWidth = 640;
-    camHeight = 480;
+   // camWidth = 640;
+   // camHeight = 480;
     
-    vidGrabber.setVerbose(true);
-    vidGrabber.setup(camWidth,camHeight);
+    //vidGrabber.setVerbose(true);
+    //vidGrabber.setup(camWidth,camHeight);
 
 
     ofEnableAlphaBlending();
@@ -39,29 +39,29 @@ void ofApp::draw(){
     shaderFilter.render();
     shaderFilter.draw(0,0);
 
-      ofPixelsRef pixelsRef = vidGrabber.getPixels();
+    //  ofPixelsRef pixelsRef = vidGrabber.getPixels();
     
-    long currentTime = ofGetElapsedTimeMillis();
+  //  long currentTime = ofGetElapsedTimeMillis();
 
-    if(currentTime - timer > 1000) {
-        float sum = 0;
-        float total = camWidth/7 * camHeight/9;
-        for (int i = 0; i < camWidth; i+= 7){
-            for (int j = 0; j < camHeight; j+= 9){
+   // if(currentTime - timer > 1000) {
+     //   float sum = 0;
+       // float total = camWidth/7 * camHeight/9;
+        //for (int i = 0; i < camWidth; i+= 7){
+         //   for (int j = 0; j < camHeight; j+= 9){
 
-                float lightness = pixelsRef.getColor(i,j).getLightness();
-                sum = sum + lightness;
+           //     float lightness = pixelsRef.getColor(i,j).getLightness();
+            //    sum = sum + lightness;
 
-            }
-        }
-        float brightness = sum/total;
+       //     }
+    //    }
+   //     float brightness = sum/total;
 
-      shaderFilter.setUniform1f("brightness", brightness);
-        std::cout << brightness << "\n";
-        timer = ofGetElapsedTimeMillis();
+   //   shaderFilter.setUniform1f("brightness", brightness);
+//        std::cout << brightness << "\n";
+    //    timer = ofGetElapsedTimeMillis();
         
         
-    }
+  //  }
     
 }
 

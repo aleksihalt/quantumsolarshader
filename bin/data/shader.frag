@@ -2,6 +2,7 @@
 precision mediump float;
 #endif
 
+#define LOW_QUALITY
 
 
 uniform float u_time;
@@ -12,7 +13,8 @@ uniform float randomNumber2;
 uniform float randomNumber3;
 uniform float randomNumber4;
 uniform float randomNumber5;
-uniform float brightness;
+//uniform float brightness;
+
 
 vec2 random2(vec2 st){
     
@@ -39,7 +41,7 @@ mat2 rotate2d(float _angle){
 float speed = 1.;
 //float speed = 1.5 - (brightness)/255;
 
-vec2 center = vec2(1.3*u_resolution.y/u_resolution.x, 0.5);
+vec2 center = vec2(1.65*u_resolution.y/u_resolution.x, 0.5);
 
 
 
@@ -52,7 +54,7 @@ float shape(vec2 st, float radius) {
     //m += noise(st+u_time*0.1)*.5;
     //a *= 1.+abs(atan(u_time*0.2))*.1;
     //a *= 1.+noise(st+u_time*0.1)*0.1;
-    f += cos(a*700.)*noise(st+u_time*speed)*.3;
+    f += cos(a*800.)*noise(st+u_time*speed)*.3;
     f += (sin(noise(st+u_time*speed)*1.)*0.05);
    // f += cos(sin(cos(st)*3)+u_time)*sin(100*st);
     return 1.-smoothstep(f,f+0.15,r);
@@ -64,7 +66,7 @@ float shapeBorder(vec2 st, float radius, float width) {
 }
 float circle(vec2 st, float radius) {
     st = center-st;
-    float r = length(st)*2.0;
+    float r = length(st)*2.;
     float a = atan(st.y,st.x);
     float f = radius;
   f += (sin(noise(st+u_time*0.2)*1.)*.01);
